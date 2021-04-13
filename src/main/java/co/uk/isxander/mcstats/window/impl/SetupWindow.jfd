@@ -1,0 +1,127 @@
+JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.10" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+			"$layoutConstraints": "hidemode 3"
+			"$columnConstraints": "[fill][fill][fill][fill][fill][fill]"
+			"$rowConstraints": "[][][][][][][]"
+		} ) {
+			name: "this"
+			"title": "McStats Setup"
+			"resizable": false
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "licenseKeyLabel"
+				"text": "License Key:"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 0"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "licenseKeyField"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+				auxiliary() {
+					"JavaCodeGenerator.customCreateCode": "new JTextField();\nlicenseKeyField.setText(McStats.getConfig().licenseKey);"
+				}
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 0"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "apiKeyLabel"
+				"text": "API Key:"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 1"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "apiKeyField"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+				auxiliary() {
+					"JavaCodeGenerator.customCreateCode": "new JTextField();\napiKeyField.setText(McStats.getConfig().apiKey);"
+				}
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 1,width 300"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "mcFolderLabel"
+				"text": "MC Folder: "
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 2"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "mcFolderTextField"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+				auxiliary() {
+					"JavaCodeGenerator.customCreateCode": "new JTextField();\nmcFolderTextField.setText(McStats.getConfig().minecraftFolder.getPath());"
+				}
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 2"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "lcFolderLabel"
+				"text": "LC Folder:"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 3"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "lcFolderTextField"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+				auxiliary() {
+					"JavaCodeGenerator.customCreateCode": "new JTextField();\nlcFolderTextField.setText(McStats.getConfig().lunarFolder.getPath());"
+				}
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 3"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Track Lobbies: "
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 4"
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "trackLobbiesCheckbox"
+				"toolTipText": "Whether or not the program will track people in lobbies"
+				auxiliary() {
+					"JavaCodeGenerator.customCreateCode": "new JCheckBox();\ntrackLobbiesCheckbox.setSelected(McStats.getConfig().trackLobbies);"
+				}
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 4,alignx left,growx 0"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "speedLabel"
+				"text": "Speed:"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 5"
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "speedDropdown"
+				"model": new javax.swing.DefaultComboBoxModel {
+					selectedItem: "2 threads (very slow but performant)"
+					addElement( "2 threads (very slow but performant)" )
+					addElement( "4 threads (slow but less performant)" )
+					addElement( "8 threads (default)" )
+					addElement( "12 threads (fast but expensive)" )
+					addElement( "16 threads (very fast but very expensive)" )
+				}
+				"selectedIndex": 2
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 1 5"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "finishedButton"
+				"text": "Finished"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "finishedButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 6 6 1"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 320 )
+		} )
+	}
+}

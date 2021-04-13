@@ -1,0 +1,79 @@
+JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.9.1" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+			"$layoutConstraints": "hidemode 3"
+			"$columnConstraints": "[fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][18,fill]"
+			"$rowConstraints": "[][][][][][][][][][][][][][]"
+		} ) {
+			name: "this"
+			"title": "McStats"
+			"defaultCloseOperation": 3
+			"alwaysOnTop": true
+			"background": new java.awt.Color( 40, 40, 40, 255 )
+			"foreground": sfield java.awt.SystemColor text
+			"font": new java.awt.Font( "Fixedsys Excelsior 3.01", 0, 12 )
+			"opacity": 0.75f
+			"undecorated": true
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "draggableArea"
+				"enabled": false
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
+				"foreground": sfield java.awt.Color black
+				addEvent( new FormEvent( "java.awt.event.MouseMotionListener", "mouseDragged", "draggableAreaMouseDragged", true ) )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mousePressed", "draggableAreaMousePressed", true ) )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "draggableAreaMouseReleased", true ) )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 0 20 1,alignx left,growx 0,width 500"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "hideButton"
+				"background": new java.awt.Color( 255, 131, 0, 255 )
+				"horizontalAlignment": 4
+				"toolTipText": "Hide"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "hideButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 20 0,width 30:30:30,height 30:30:30"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "fullscreenButton"
+				"background": new java.awt.Color( 0, 255, 0, 255 )
+				"horizontalAlignment": 4
+				"toolTipText": "Fullscreen"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "fullscreenButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 21 0,alignx center,growx 0,width 30:30:30,height 30:30:30"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "closeButton"
+				"background": new java.awt.Color( 197, 0, 0, 255 )
+				"preferredSize": new java.awt.Dimension( 30, 30 )
+				"toolTipText": "Exit"
+				"horizontalAlignment": 4
+				"foreground": new java.awt.Color( 255, 255, 255, 255 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "closeButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 22 0,alignx right,growx 0,width 30:30:30,height 30:30:30"
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				"foreground": sfield java.awt.SystemColor scrollbar
+				"autoscrolls": true
+				add( new FormComponent( "javax.swing.JTextPane" ) {
+					name: "textPane"
+					"font": new java.awt.Font( "Consolas", 0, 14 )
+					"background": new java.awt.Color( 0, 0, 0, 255 )
+					"foreground": new java.awt.Color( 255, 255, 255, 255 )
+					"editable": false
+				} )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 1 23 13,width 600,height 340"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 600, 420 )
+		} )
+	}
+}

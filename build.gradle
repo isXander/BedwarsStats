@@ -1,0 +1,78 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+}
+
+mainClassName = 'co.uk.isxander.mcstats.licensing.SerialGenerator'
+group 'co.uk.isxander'
+version '1.0'
+
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+shadowJar {
+    archiveClassifier.set('shadow')
+    archiveVersion.set('')
+
+    exclude 'co.uk.isxander.mcstats.**.*'
+}
+
+
+compileJava {
+    sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    implementation 'net.java.dev.jna:jna:5.7.0'
+    implementation 'io.github.vincenzopalazzo:material-ui-swing:1.1.2-rc1'
+    implementation 'net.java.dev.jna:jna-platform:5.7.0'
+    compile files('./libs/darcula.jar')
+    compile 'com.miglayout:miglayout-swing:5.2'
+    compile 'com.formdev:flatlaf:1.0'
+    compile 'com.google.code.gson:gson:2.8.6'
+    compile 'com.google.guava:guava:30.1-jre'
+    implementation group: 'com.yworks', name: 'yguard', version: '3.0.0'
+}
+
+task obfuscate {
+    //dependsOn jar
+    group 'yGuard'
+    description 'Obfuscates and shrinks the java archive.'
+
+    doLast {
+        ant.taskdef(
+                name: 'yguard',
+                classname: 'com.yworks.yguard.YGuardTask',
+                classpath: sourceSets.main.runtimeClasspath.asPath
+        )
+
+        def archivePath = jar.archiveFile.get().asFile.path
+        ant.yguard {
+            inoutpair(in: archivePath, out: archivePath.replace('.jar', '_obf.jar'))
+            shrink(logfile: "${buildDir}/yshrink.log.xml") {
+                keep {
+                    method(name: "void main(java.lang.String[])", "class": application.mainClassName)
+                }
+            }
+            rename(mainclass: application.mainClassName, logfile: "${buildDir}/yguard.log.xml") {
+                property(name: "error-checking", value: "pedantic")
+            }
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes (
+                'MainClass': 'co.uk.isxander.mcstats.licensing.SerialGenerator'
+        )
+    }
+}
+
+jar.dependsOn shadowJar
+shadowJar.dependsOn obfuscate
